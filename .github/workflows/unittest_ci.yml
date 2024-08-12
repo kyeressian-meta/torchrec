@@ -97,7 +97,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+<<<<<<< HEAD
         os: [linux.g5.4xlarge.nvidia.gpu]
+=======
+        os: [linux.g5.12xlarge.nvidia.gpu]
+>>>>>>> 1bcd1243 (Fix GPU CI (#2289))
         python-version: [3.8]
         cuda-tag: ["cu11"]
     needs: build_on_cpu
@@ -129,10 +133,8 @@ jobs:
         echo "instance-id: $(get_ec2_metadata instance-id)"
         echo "instance-type: $(get_ec2_metadata instance-type)"
     - name: check gpu info
-      shell: bash
       run: |
-        sudo yum install lshw -y
-        sudo lshw -C display
+        nvidia-smi
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
