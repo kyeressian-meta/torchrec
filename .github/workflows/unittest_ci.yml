@@ -192,4 +192,6 @@ jobs:
         conda run -n build_binary \
           python -m pip install pytest
         conda run -n build_binary \
+          pip install -r requirements.txt
+        conda run -n build_binary \
           python -m pytest torchrec -v -s -W ignore::pytest.PytestCollectionWarning --continue-on-collection-errors
