@@ -95,7 +95,7 @@ jobs:
   # download from GHA, test on gpu
   test_on_gpu:
     runs-on: ${{ matrix.os }}
-    timeout: 15
+    timeout-minutes: 30
     strategy:
       matrix:
         os: [linux.g5.12xlarge.nvidia.gpu]
